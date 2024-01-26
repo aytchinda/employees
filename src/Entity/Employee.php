@@ -11,7 +11,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-enum Gender: string {
+enum Gender: string
+{
     case Homme = 'M';
     case Femme = 'F';
     case Non_Binary = 'X';
@@ -23,17 +24,17 @@ class Employee implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(name:'emp_no')]
+    #[ORM\Column(name: 'emp_no')]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $birthDate = null;
 
-    #[ORM\Column(length: 14)]
+    #[ORM\Column(length: 14, name: 'firstname')]
     #[Assert\Length(min: 3, max: 14)]
     private ?string $firstName = null;
 
-    #[ORM\Column(length: 16)]
+    #[ORM\Column(length: 16, name: 'lastname')]
     #[Assert\Length(min: 3, max: 16)]
     private ?string $lastName = null;
 
